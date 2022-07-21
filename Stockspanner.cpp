@@ -1,3 +1,8 @@
+// Input
+// ["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
+// [[], [100], [80], [60], [70], [60], [75], [85]]
+// Output
+// [null, 1, 1, 1, 2, 1, 4, 6]
 #include<iostream>
 using namespace std;
 class StockSpanner {
