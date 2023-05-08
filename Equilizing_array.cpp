@@ -27,3 +27,13 @@ int minOperations(vector<int>& arr, int threshold, int d) {
     }
     return ans;
 }
+
+int main() {
+    // Example usage
+    vector<int> arr = {10, 20, 30, 40, 50};
+    int threshold = 3;
+    int d = 2;
+    int result = minOperations(arr, threshold, d);
+    cout << "Minimum operations: " << result << endl;
+    return 0;
+}
