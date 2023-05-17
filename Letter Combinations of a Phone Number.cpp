@@ -1,3 +1,6 @@
+//Input: digits = "23"
+//Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+
 #include<iostream>
 #include <vector>
 #include <unordered_map>
