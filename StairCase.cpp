@@ -36,3 +36,23 @@ int staircaseTraversal(int height, int maxSteps) {
   }
   return x[height];
 }
+// using sliding window 
+using namespace std;
+
+int staircaseTraversal(int height, int maxSteps) {
+  // Sliding window approach
+   int currways=0;
+  vector<int>x;
+  x.push_back(1);
+  for(int i=1;i<=height;i++){
+    int startofwindow=i-maxSteps-1;
+    int endofwindow=i-1;
+    if (startofwindow>=0){
+      currways-=x[startofwindow];
+    }
+    currways+=x[endofwindow];
+    x.push_back(currways);
+  }
+  return x[height];
+}
+
