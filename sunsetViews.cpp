@@ -1,3 +1,4 @@
+O(n*n)
 using namespace std;
 
 vector<int> sunsetViews(vector<int> arr, string direction) {
@@ -36,3 +37,31 @@ int n=arr.size();
   
   return res;
 }
+
+// increasing time complexity O(n)
+
+using namespace std;
+
+vector<int> sunsetViews(vector<int> arr, string direction) {
+  int maxheight=0;
+  vector<int>res;
+  if(direction=="WEST"){
+    for(int i=0;i<arr.size();i++){
+      if(arr[i]>maxheight){
+        maxheight=arr[i];
+        res.push_back(i);
+      }
+    }
+  }
+  else{
+    for(int i=arr.size()-1;i>=0;i--){
+      if(arr[i]>maxheight){
+        maxheight=arr[i];
+        res.push_back(i);
+      }
+    }
+    reverse(res.begin(),res.end());
+  }
+  return res;
+}
+
