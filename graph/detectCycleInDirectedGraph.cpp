@@ -38,3 +38,46 @@ for(int i=0;i<n;i++){
 }
 return 0;
 }
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution {
+  public:
+    // Function to detect cycle in a directed graph.
+    bool isCyclic(int V, vector<int> adj[]) {
+        // code here
+        queue<int>que;
+        vector<int>indegree(V,0);
+        for(int i=0;i<V;i++){
+            for(int u:adj[i]){
+                indegree[u]++;
+            }
+        }
+        int count=0;
+        for(int i=0;i<V;i++){
+            if(indegree[i]==0){
+                que.push(i);
+                count++;
+            }
+        }
+
+        while(!que.empty()){
+            int src=que.front();
+            que.pop();
+            for(int i:adj[src]){
+                indegree[i]--;
+                if(indegree[i]==0){
+                    que.push(i);
+                    count++;
+                }
+            }
+        }
+        if(count==V){
+            return false;
+        }
+        return true;
+    }
+};
