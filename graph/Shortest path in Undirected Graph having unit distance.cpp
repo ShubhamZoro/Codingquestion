@@ -5,10 +5,6 @@ class Solution {
     vector<int> shortestPath(vector<vector<int>>& edges, int N,int M, int src){
         // code here
         vector<int>result(N,INT_MAX);
-        vector<int>ans(N);
-        for(int i=0;i<N;i++){
-            ans[i]=i;
-        }
         unordered_map<int,vector<pair<int,int>>>umap;
         for(auto vec:edges){
             umap[vec[0]].push_back({vec[1],1});
@@ -27,7 +23,6 @@ class Solution {
                 if(d+dist<result[adjnode]){
                     result[adjnode]=d+dist;
                     pq.push({d+dist,adjnode});
-                    ans[adjnode]=node;
                 }
             }
         }
