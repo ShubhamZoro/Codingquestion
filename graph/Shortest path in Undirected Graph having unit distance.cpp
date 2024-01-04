@@ -1,3 +1,45 @@
+// User function Template for C++
+class Solution {
+  public:
+    
+    vector<int> shortestPath(vector<vector<int>>& edges, int N,int M, int src){
+        // code here
+        vector<int>result(N,INT_MAX);
+        vector<int>ans(N);
+        for(int i=0;i<N;i++){
+            ans[i]=i;
+        }
+        unordered_map<int,vector<pair<int,int>>>umap;
+        for(auto vec:edges){
+            umap[vec[0]].push_back({vec[1],1});
+            umap[vec[1]].push_back({vec[0],1});
+        }
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        pq.push({0,src});
+        result[src]=0;
+        while(!pq.empty()){
+            int d=pq.top().first;
+            int node=pq.top().second;
+            pq.pop();
+            for(auto vec:umap[node]){
+                int dist=vec.second;
+                int adjnode=vec.first;
+                if(d+dist<result[adjnode]){
+                    result[adjnode]=d+dist;
+                    pq.push({d+dist,adjnode});
+                    ans[adjnode]=node;
+                }
+            }
+        }
+        for(int i=0;i<N;i++){
+            if(result[i]==INT_MAX){
+                result[i]=-1;
+            }
+        }
+        return result;
+    }
+};
+
 //{ Driver Code Starts
 // Initial Template for C++
 
