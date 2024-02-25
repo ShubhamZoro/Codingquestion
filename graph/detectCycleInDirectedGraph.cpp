@@ -7,7 +7,7 @@ bool checkcycleDFS(int node,unordered_map<int ,bool>&visited,unordered_map<int,b
   for(auto i:adj[node]){
     if(!visited[i]){
       bool cycle=checkcycleDFS(i,visited,dfsvisited, adj);
-      if (cycle) {
+      if(cycle){
         return true;
       }
     }
@@ -39,7 +39,9 @@ for(int i=0;i<n;i++){
 return 0;
 }
 
+//BFS------------------------------------
 
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -81,3 +83,30 @@ class Solution {
         return true;
     }
 };
+
+//{ Driver Code Starts.
+
+int main() {
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int V, E;
+        cin >> V >> E;
+
+        vector<int> adj[V];
+
+        for (int i = 0; i < E; i++) {
+            int u, v;
+            cin >> u >> v;
+            adj[u].push_back(v);
+        }
+
+        Solution obj;
+        cout << obj.isCyclic(V, adj) << "\n";
+    }
+
+    return 0;
+}
+
+// } Driver Code Ends

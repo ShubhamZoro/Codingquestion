@@ -26,7 +26,7 @@ class Solution
                 if(result[adjNode]>d+dist){
                     if(result[adjNode]!=INT_MAX){
                         st.erase({result[adjNode],adjNode});
-                        
+
                     }
                     result[adjNode]=d+dist;
                     st.insert({result[adjNode],adjNode});
@@ -63,10 +63,10 @@ int main()
         }
         int S;
         cin>>S;
-        
+
         Solution obj;
     	vector<int> res = obj.dijkstra(V, adj, S);
-    	
+
     	for(int i=0; i<V; i++)
     	    cout<<res[i]<<" ";
     	cout<<endl;
@@ -77,8 +77,11 @@ int main()
 
 
 // } Driver Code Ends
+}
 
-////////
+
+///////
+
 
 //{ Driver Code Starts
 #include<bits/stdc++.h>
@@ -101,7 +104,7 @@ class Solution
             int d=pq.top().first;
             int node=pq.top().second;
             pq.pop();
-            
+
             for(auto &vec:adj[node]){
                 // node se adjnode p jane k liye wt weight lagta h
                 int adjNode=vec[0];
@@ -142,10 +145,10 @@ int main()
         }
         int S;
         cin>>S;
-        
+
         Solution obj;
     	vector<int> res = obj.dijkstra(V, adj, S);
-    	
+
     	for(int i=0; i<V; i++)
     	    cout<<res[i]<<" ";
     	cout<<endl;

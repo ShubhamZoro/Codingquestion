@@ -12,7 +12,7 @@ visited[src]=1;
 queue<int>q;
 q.push(src);
 while(!q.empty()){
-    int frontnode=q.front()
+    int frontnode=q.front();
     q.pop();
     for(auto i:adjList[frontnode]){
         if(visited[i]==true && parent[frontnode]!=i){
@@ -54,7 +54,7 @@ return "NO";
 // Using DFS
 
 bool isCyclicDFS(int src,int parent,unordered_map<int,bool>&visited,unordered_map<int ,list<int>>&adjList){
-visited[i]=1;
+visited[src]=1;
 for(auto i:adjList[src]){
     if(!visited[i]){
         bool cycleDetected=isCyclicDFS(i,src,visited,adjList);
