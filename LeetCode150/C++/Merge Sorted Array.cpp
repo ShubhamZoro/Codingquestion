@@ -8,13 +8,8 @@ public:
 
         int i=0;
         int j=0;
-        for(;j<m+n;){
-            if(i==n){
-                break;
-            }
-            if(j==m){
-                break;
-            }
+        while (j<m && i<n){
+           
             if(nums1[j]>nums2[i]){
                 res.push_back(nums2[i]);
                 i++;
