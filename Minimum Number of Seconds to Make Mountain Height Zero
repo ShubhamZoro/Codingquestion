@@ -1,0 +1,36 @@
+class Solution {
+public:
+    void solve(int i, int n, int remainingHeight, vector<int>& workerTimes,
+               long long currentTime, long long& res) {
+
+        if (remainingHeight == 0) {
+            res = min(res, currentTime);
+            return;
+        }
+
+        if (i == n) return;
+
+        for (int x = 0; x <= remainingHeight; x++) {
+            long long timeNeeded =
+                (long long)workerTimes[i] * (x * (x + 1) / 2);
+
+            solve(i + 1,
+                  n,
+                  remainingHeight - x,
+                  workerTimes,
+                  max(currentTime, timeNeeded), 
+                  res);
+        }
+    }
+
+    long long minNumberOfSeconds(int mountainHeight, vector<int>& workerTimes) {
+        int n = workerTimes.size();
+        long long res = LLONG_MAX;
+
+        sort(workerTimes.begin(), workerTimes.end());
+
+        solve(0, n, mountainHeight, workerTimes, 0, res);
+
+        return res;
+    }
+};
