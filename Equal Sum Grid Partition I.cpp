@@ -1,4 +1,52 @@
-// Brute Force
+// Brute Force -TLE
+class Solution {
+public:
+    bool canPartitionGrid(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+
+        long long total = 0;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                total += grid[i][j];
+            }
+        }
+
+        // If total sum is odd → cannot split
+        if(total % 2 != 0) return false;
+
+        // Try horizontal cuts
+        for(int cut = 0; cut < n - 1; cut++){
+            long long topSum = 0;
+
+            for(int i = 0; i <= cut; i++){
+                for(int j = 0; j < m; j++){
+                    topSum += grid[i][j];
+                }
+            }
+
+            if(topSum == total - topSum) return true;
+        }
+
+        // Try vertical cuts
+        for(int cut = 0; cut < m - 1; cut++){
+            long long leftSum = 0;
+
+            for(int j = 0; j <= cut; j++){
+                for(int i = 0; i < n; i++){
+                    leftSum += grid[i][j];
+                }
+            }
+
+            if(leftSum == total - leftSum) return true;
+        }
+
+        return false;
+    }
+};
+
+
+// Optimize Approach
 
 class Solution {
 public:
