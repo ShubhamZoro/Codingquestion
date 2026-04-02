@@ -24,3 +24,25 @@ vector<int> nextGreaterElement(vector<int> array) {
   }
   return output;
 }
+
+/////////////// python
+
+from typing import List
+
+def next_largest_number_to_the_right(nums: List[int]) -> List[int]:
+    # Write your code here
+    st=[]
+    n=len(nums)
+    res=[-1]*n
+    for i in range(n-1,-1,-1):
+        while(len(st)!=0 and st[-1]<=nums[i]):
+            st.pop()
+        
+        if(len(st)==0 ):
+            res[i]=-1
+        else:
+            res[i]=st[-1]
+        
+        
+        st.append(nums[i])
+    return res
