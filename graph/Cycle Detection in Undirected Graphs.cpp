@@ -21,11 +21,11 @@ while(!q.empty()){
         else if(!visited[i]){
            q.push(i);
            visited[i]=1;
-           parent[i]=frontnode ;
+           parent[i]=frontnode;
         }
     }
 }
-return false
+return false;
 }
 
 string cycleDetection(vector<vector<int>>&edges,int n,int m){
@@ -49,7 +49,6 @@ for(int i=0;i<n;i++){
 }
 return "NO";
 }
-
 
 // Using DFS
 
